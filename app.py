@@ -24,7 +24,7 @@ np.random.seed(1)
 # initialize weights randomly with mean 0
 syn0 = 2*np.random.random((3,1)) - 1
 
-for iter in xrange(10000):
+for iter in range(10000):
 
     # forward propagation
     l0 = X
@@ -40,5 +40,5 @@ for iter in xrange(10000):
     # update weights
     syn0 += np.dot(l0.T,l1_delta)
 
-print "Output After Training:"
-print l1
+print ("Output After Training:")
+print (l1)
