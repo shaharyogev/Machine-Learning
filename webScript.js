@@ -3,8 +3,13 @@
 
 
 dateRangeSelector =(period) =>{
-	const dateButtonClass = document.getElementsByClassName("alert-info");
-	dateButtonClass[0].querySelector('input[type="text"]').click();
+	//const dateButtonClass = document.getElementsByClassName("alert-info");
+	const daterangepicker = document.getElementsByClassName("daterangepicker");
+	let liList = daterangepicker.querySelector("li[data-range-key="+period+"]");
+	liList
+	//Click the data renge 
+	//dateButtonClass[0].querySelector('input[type="text"]').click();
+	//apand class active - data-range-key='This Month'
 	
 }
 
