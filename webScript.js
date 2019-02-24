@@ -27,7 +27,6 @@ daysRunningSelector = (period) =>{
 	return daysTo;
 }
 
-daysRunningSelector(30);
 
 //Under “Ad Type” choose “Popup”
 
