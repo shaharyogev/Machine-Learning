@@ -4,20 +4,15 @@
 
 dateRangeSelector = (period) =>{
 	//select the ranges element
+	const datePop = document.getElementsByClassName('filter-date');
+	datePop[0].click();
 	const ranges = document.getElementsByClassName("ranges");
+	ranges[0].firstChild.querySelector('li[data-range-key="'+period+'"]').click();
 
-	//clear the current class
-	let clearClass = ranges[0].firstChild.querySelectorAll('li[data-range-key]');
-	clearClass.forEach(i => {
-		i.classList.remove("active");
-	});
-
-	//add the active class to the wanted range
-	let liList = ranges[0].firstChild.querySelector('li[data-range-key="'+period+'"]');
-	liList.classList.add("active");
-
-	return liList;
+return true;
 }
+
+
 
 
 //Change “Days running” to 30  
@@ -32,14 +27,6 @@ daysRunningSelector = (period) =>{
 	return daysTo;
 }
 
-
-//22.2.2019 11:30 am
-// I worked on the task for few minutes on the train from Rehovot to Tel-Aviv for the past two mornings. 
-// on friday the connection to the website got blocked as we talked on the email. 
-// I extract some code form unclosed tab. I hope you will consider the circumstances. 
-
-
-//pseudo code - can't test if its working;
 
 //Under “Ad Type” choose “Popup”
 
@@ -87,8 +74,8 @@ getPageUrl = () =>{
 		document.body.appendChild(fr);
 
 		//pseudo code - can't test if its working, I didn't open any links from the search results its all based on assumptions
-		let showMore = document.getElementById("showMoreDiv");
-		showMore.click();
+		let showMore = document.getElementsByClassName('btn-danger');
+		showMore[0].click();
 		
 
 		let redirectChainUrls = document.getElementsByClassName("redirectChainUrls");
