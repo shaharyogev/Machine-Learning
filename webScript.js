@@ -33,13 +33,6 @@ daysRunningSelector = (period) =>{
 }
 
 
-//22.2.2019 11:30 am
-// I worked on the task for few minutes on the train from Rehovot to Tel-Aviv for the past two mornings. 
-// on friday the connection to the website got blocked as we talked on the email. 
-// I extract some code form unclosed tab. I hope you will consider the circumstances. 
-
-
-//pseudo code - can't test if its working;
 
 //Under “Ad Type” choose “Popup”
 
