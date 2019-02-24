@@ -6,7 +6,7 @@ dateRangeSelector = (period) =>{
 	//select the ranges element
 	const datePop = document.getElementsByClassName('filter-date');
 	datePop[0].click();
-const ranges = document.getElementsByClassName("ranges");
+	const ranges = document.getElementsByClassName("ranges");
 	ranges[0].firstChild.querySelector('li[data-range-key="'+period+'"]').click();
 
 return true;
@@ -27,7 +27,7 @@ daysRunningSelector = (period) =>{
 	return daysTo;
 }
 
-
+daysRunningSelector(30);
 
 //Under “Ad Type” choose “Popup”
 
@@ -75,8 +75,8 @@ getPageUrl = () =>{
 		document.body.appendChild(fr);
 
 		//pseudo code - can't test if its working, I didn't open any links from the search results its all based on assumptions
-		let showMore = document.getElementById("showMoreDiv");
-		showMore.click();
+		let showMore = document.getElementsByClassName('btn-danger');
+		showMore[0].click();
 		
 
 		let redirectChainUrls = document.getElementsByClassName("redirectChainUrls");
