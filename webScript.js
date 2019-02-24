@@ -4,20 +4,15 @@
 
 dateRangeSelector = (period) =>{
 	//select the ranges element
-	const ranges = document.getElementsByClassName("ranges");
+	const datePop = document.getElementsByClassName('filter-date');
+	datePop[0].click();
+const ranges = document.getElementsByClassName("ranges");
+	ranges[0].firstChild.querySelector('li[data-range-key="'+period+'"]').click();
 
-	//clear the current class
-	let clearClass = ranges[0].firstChild.querySelectorAll('li[data-range-key]');
-	clearClass.forEach(i => {
-		i.classList.remove("active");
-	});
-
-	//add the active class to the wanted range
-	let liList = ranges[0].firstChild.querySelector('li[data-range-key="'+period+'"]');
-	liList.classList.add("active");
-
-	return liList;
+return true;
 }
+
+
 
 
 //Change “Days running” to 30  
