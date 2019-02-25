@@ -4,27 +4,24 @@
 
 dateRangeSelector = (period) =>{
 	//select the ranges element
+	window.location.search = "";
 	const datePop = document.getElementsByClassName('filter-date');
 	datePop[0].click();
 	const ranges = document.getElementsByClassName("ranges");
 	ranges[0].firstChild.querySelector('li[data-range-key="'+period+'"]').click();
 
-return true;
+	return true;
 }
-
-
 
 
 //Change “Days running” to 30  
 
 daysRunningSelector = (period) =>{
-	//select the "days-to pull-right"
-	const daysTo = document.getElementsByClassName("days-to pull-right");
 
-	//insert the value
-	daysTo[0].innerText = period;
+	let daysSearch = window.location.search;
+	window.location.search = daysSearch + "&days=1-" + period + "&";
 
-	return daysTo;
+	return true;
 }
 
 
@@ -32,26 +29,26 @@ daysRunningSelector = (period) =>{
 
 popupSelector = () =>{
 
-//went with a primitive approach, i wanted to find the id base on the popup string
-
 	let popupDiv = document.getElementById("adType_2");
-	let obj = popupDiv.parentElement.parentElement.getElementsByClassName("check-block__link-item")[0].firstElementChild;
-	obj.click();
+	if (!popupDiv.getAttribute("checked")) {
+		popupDiv.click();
+	}
 	
-	//need to test for the window to fully load the filtered data
-	//will add event listener or dom element test before the function ends.
-
-	return obj.innerText();
+	return true;
 }
 
 //Open each one of the results you get on the right-hand side.
 //When opened, under“ Offer & Tracking” there’ s a“ Show More” button that displays a“ Landing
 //Page Details” dialog that looks like this:
 
-//pseudo code - can't test if its working
-
-
 getPageUrl = () =>{
+	searchResultsGrid = document.getElementsByClassName('ng-isolate-scope')[0];
+		let scrollResults = ()=> searchResultsGrid.scrollIntoView();
+
+	
+		setInterval(scrollResults ,10);
+	
+
 	let items = document.getElementsByClassName("search-results-grid__item");
 	let urlList = [];
 
