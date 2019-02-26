@@ -17,7 +17,7 @@ dateRangeSelector = (period) =>{
 //Change “Days running” to 30  
 
 daysRunningSelector = (period) =>{
-
+	//This is not the best solution. This will cat the flow. 
 	let daysSearch = window.location.search;
 	window.location.search = daysSearch + "&days=1-" + period + "&";
 
@@ -43,22 +43,27 @@ popupSelector = () =>{
 
 getPageUrl = () =>{
 	searchResultsGrid = document.getElementsByClassName('ng-isolate-scope')[0];
-		let scrollResults = ()=> searchResultsGrid.scrollIntoView();
-
+		let scrollResults = ()=> {
+			searchResultsGrid.scrollIntoView();
+		}
+		let scrollInterval = setInterval(scrollResults ,10);
+		if (searchResultsGrid.scrollIntoView()) {
+			scrollInterval = clearInterval;
+		}
 	
-		setInterval(scrollResults ,10);
-	
 
-	let items = document.getElementsByClassName("search-results-grid__item");
-	let urlList = [];
+	let items = document.getElementsByClassName("inner has-favourite");
+	let urlList;
 
 	//collect the urls links to array
-	for (let i in items) {
-		let temp = items[i].firstElementChild.firstElementChild.href;
-		urlList[i] = temp;
+	for (let i in items.length) {
+		let temp = items[i].firstElementChild;
+		urlList[i] = temp.href;
 	};
 
-	for (let i in urlList){
+	let redirectChainUrlsList = [];
+
+	for (let i in urlList.length){
 		
 		//window.open(urlList[i]) //open the url in the same window if the website prevent iframe from loading
 		//in the new tab run the same script
@@ -68,35 +73,22 @@ getPageUrl = () =>{
 		fr.setAttribute("name", urlList[i]);
 		fr.style.width = "640px";
 		fr.style.height = "480px";
-		document.body.appendChild(fr);
+		document.body.appendChild(fr).click();
 
-		//pseudo code - can't test if its working, I didn't open any links from the search results its all based on assumptions
 		let showMore = document.getElementsByClassName('btn-danger');
 		showMore[0].click();
 		
-
-		let redirectChainUrls = document.getElementsByClassName("redirectChainUrls");
-		let redirectChainUrlsList = [];
+		let redirectChainUrls = document.getElementsByClassName("redirect-chain__item");
 
 		//collect the urls links to array
-		for (let i in redirectChainUrls) {
-			let temp = redirectChainUrls[i].href;
-			redirectChainUrlsList[i] = temp;
+		for (let i in redirectChainUrls.length) {
+			redirectChainUrlsList.push = redirectChainUrls[i].firstElementChild.href
+
+		
 		};
 
-		let outgoingUrls = document.getElementsByClassName("outgoingUrls");
-		let outgoingUrlsList = [];
-
-		//collect the urls links to array
-		for (let i in outgoingUrls) {
-			let temp = outgoingUrls[i].href;
-			outgoingUrlsList[i] = temp;
-		};
 	}
- return ({
-	 'redirectChainUrlsList' : redirectChainUrlsList,
-	  'outgoingUrlsList' : outgoingUrlsList
-	});
+ return (redirectChainUrlsList);
 }
 
 //async functions call to keep everything in the right order.
