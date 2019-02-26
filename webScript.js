@@ -53,18 +53,17 @@ getPageUrl = () =>{
 	
 
 	let items = document.getElementsByClassName("inner has-favourite");
-	let urlList;
+	let urlList = [];
 
 	//collect the urls links to array
-	for (let i in items.length) {
-		let temp = items[i].firstElementChild;
-		urlList[i] = temp.href;
+	for (let i = 0; i < items.length; i++) {
+		urlList.push(items[i].firstElementChild.href);
 	};
 
 	let redirectChainUrlsList = [];
 
-	for (let i in urlList.length){
-		
+	for (let i = 0; i < urlList.length; i++) {
+		//console.log(i)
 		//window.open(urlList[i]) //open the url in the same window if the website prevent iframe from loading
 		//in the new tab run the same script
 
@@ -75,17 +74,22 @@ getPageUrl = () =>{
 		fr.style.height = "480px";
 		document.body.appendChild(fr).click();
 
-		let showMore = document.getElementsByClassName('btn-danger');
-		showMore[0].click();
-		
-		let redirectChainUrls = document.getElementsByClassName("redirect-chain__item");
+		//pseudo code - can't test if its working, I didn't open any links from the search results its all based on assumptions
+		//let showMore = document.getElementsByClassName('btn-danger');
+		//showMore[0].click();
+
+
+		let redirectChainUrls = fr.getElementsByClassName("redirect-chain__item");
 
 		//collect the urls links to array
-		for (let i in redirectChainUrls.length) {
-			redirectChainUrlsList.push = redirectChainUrls[i].firstElementChild.href
+		for (let i = 0; i < redirectChainUrls.length; i++) {
+			redirectChainUrlsList.push(redirectChainUrls[i].firstElementChild.href);
 
-		
+			//let temp = redirectChainUrls[i].firstElementChild;
+			//redirectChainUrlsList.push += temp.href;
 		};
+		document.body.removeChild(fr);
+		console.log(redirectChainUrlsList)
 
 	}
  return (redirectChainUrlsList);
