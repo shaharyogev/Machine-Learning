@@ -67,19 +67,19 @@ getPageUrl = () =>{
 		//window.open(urlList[i]) //open the url in the same window if the website prevent iframe from loading
 		//in the new tab run the same script
 
-		let fr = document.createElement("iframe");
-		fr.setAttribute("src", urlList[i]);
-		fr.setAttribute("name", urlList[i]);
-		fr.style.width = "640px";
-		fr.style.height = "480px";
-		document.body.appendChild(fr).click();
+			let fr = document.createElement("iframe");
+			fr.setAttribute("src", urlList[i]);
+			fr.setAttribute("id", "iframeId");
+			fr.style.width = "640px";
+			fr.style.height = "480px";
+			document.body.appendChild(fr).click();
+			let iframeId = document.getElementById("iframeId");
+			let iframeDocument;
+			iframeId.contentWindow.onload =() => {
+				iframeDocument = iframeId.contentDocument
+			};
 
-		//pseudo code - can't test if its working, I didn't open any links from the search results its all based on assumptions
-		//let showMore = document.getElementsByClassName('btn-danger');
-		//showMore[0].click();
-
-
-		let redirectChainUrls = fr.getElementsByClassName("redirect-chain__item");
+		let redirectChainUrls = iframeDocument.getElementsByClassName("redirect-chain__item");
 
 		//collect the urls links to array
 		for (let i = 0; i < redirectChainUrls.length; i++) {
@@ -88,7 +88,7 @@ getPageUrl = () =>{
 			//let temp = redirectChainUrls[i].firstElementChild;
 			//redirectChainUrlsList.push += temp.href;
 		};
-		document.body.removeChild(fr);
+		document.body.removeChild(iframeId);
 		console.log(redirectChainUrlsList)
 
 	}
