@@ -77,19 +77,18 @@ getPageUrl = () =>{
 			let iframeDocument;
 			iframeId.contentWindow.onload =() => {
 				iframeDocument = iframeId.contentDocument
-			};
-
-		let redirectChainUrls = iframeDocument.getElementsByClassName("redirect-chain__item");
+				let redirectChainUrls = iframeDocument.getElementsByClassName("redirect-chain__item");
 
 		//collect the urls links to array
 		for (let i = 0; i < redirectChainUrls.length; i++) {
 			redirectChainUrlsList.push(redirectChainUrls[i].firstElementChild.href);
-
 			//let temp = redirectChainUrls[i].firstElementChild;
 			//redirectChainUrlsList.push += temp.href;
 		};
-		document.body.removeChild(iframeId);
 		console.log(redirectChainUrlsList)
+
+	};
+		document.body.removeChild(iframeId);
 
 	}
  return (redirectChainUrlsList);
