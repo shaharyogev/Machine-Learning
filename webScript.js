@@ -1,7 +1,7 @@
 // Under date range choose from Feb 1st till now
 
 
-d dateRangeSelector = (period) => {
+dateRangeSelector = (period) => {
 	//select the ranges element
 	const datePop = document.getElementsByClassName('filter-date');
 	datePop[0].click();
