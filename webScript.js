@@ -26,7 +26,7 @@ daysRunningSelector = (period) => {
 	console.log(sliderN2)
 	console.log(uiSlider)
 
-	//sating the class for the right slider
+	//seting the class for the right slider
 	sliderN2.classList.add("ui-state-hover")
 	sliderN2.classList.add("ui-state-focus")
 	sliderN2.classList.add("ui-state-active")
@@ -42,7 +42,7 @@ daysRunningSelector = (period) => {
 	uiSlider.ctrl.slider.prevValue.from = 1;
 	uiSlider.ctrl.slider.prevValue.to = period;
 
-	//traing to make the slider move for the values to post 
+	//trying to make the slider move for the values to post 
 
 	//https: //stackoverflow.com/questions/596481/is-it-possible-to-simulate-key-press-events-programmatically
 	keyboardEvent[initMethod](
