@@ -9,7 +9,12 @@ const puppeteer = require('puppeteer');
 	
 	// start the page script
 	await page.evaluate(() => {
-		document.querySelector('button[type=submit]').click();
+		document.querySelectorAll('input[name="emailOrPhone"]')[0].value ='user1@test.com';
+		document.querySelectorAll('input[name="emailOrPhone"]')[0].value ='user1@test.com';
+		document.querySelectorAll('button[type="submit"]')[0].click()
+
+		
+
 	});
 
   await browser.close();
